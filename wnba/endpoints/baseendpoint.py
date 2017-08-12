@@ -35,16 +35,16 @@ class BaseEndpoint(object):
     @staticmethod
     def process_response(response_json, idx_val, result_name):
         """
-        Parse data received from stats.nba.com endpoints
+        Parse data received from wnba requests.
 
-        :param response_json: data returned from requests to stats.nba.com endpoint.
+        :param response_json: data returned from requests to wnba.
         :type response_json: JSON
         :param idx_val: the index to retrieve from the returned data.
         :type idx_val: int
         :param result_name: json key to target for parsing results.
         :type result_name: str
         :returns: parsed nba data.
-        :rtype: Dataframe
+        :rtype: DataFrame
 
         """
         try:

@@ -11,8 +11,8 @@ class _DefaultZero:
 
 
 class LeagueID:
-    NBA = '00'
-    Default = NBA
+    WNBA = '10'
+    Default = WNBA
 
 
 class Weight(_DefaultBlank):
