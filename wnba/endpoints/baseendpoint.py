@@ -13,21 +13,18 @@ class BaseEndpoint(object):
         """
         self.client = parent
 
-    def request(self, request_url, params={}, data={}, session=None):
+    def request(self, request_url, headers, params={}, data={}, session=None):
         """
         :param request_url: url to request data from.
+        :param headers: request headers.
         :param params: Params to be used in request.
         :param data: data to be sent in request body.
         :param session: Requests session to be used, reduces latency.
         """
         session = session or self.client.session
-        response = session.request(
-            'GET', request_url, params=params, data=json.dumps(data), headers=self.client.headers,
-        )
+        response = session.request('GET', request_url, params=params, data=json.dumps(data), headers=headers)
         if response.status_code == 400:
-            response = session.request(
-                'GET', request_url, params=params, data=json.dumps(data), headers=self.client.headers
-            )
+            response = session.request('GET', request_url, params=params, data=json.dumps(data), headers=headers)
         print(response.url)
         # check_status_code(response)
         return response.json()

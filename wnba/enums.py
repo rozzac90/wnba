@@ -30,7 +30,7 @@ class Weight(_DefaultBlank):
 
 
 class Season:
-    Current = '2016-17'
+    Current = '2017'
     Default = Current
 
 
