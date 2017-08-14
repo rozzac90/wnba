@@ -21,32 +21,34 @@ class Team(BaseEndpoint):
                            league_id=enums.LeagueID.Default, location=enums.Location.Default, month=enums.Month.Default,
                            outcome=enums.Outcome.Default, per_mode=enums.PerMode.Totals, season=enums.Season.Default,
                            season_segment=enums.SeasonSegment.Default, season_type=enums.SeasonType.Default,
-                           vs_team_id=''):
+                           vs_team_id='', days_rest=''):
         """
         Team advanced stats breakdown.
 
         :param league_id: ID of the league to get data for. Default 00. Required.
-        :type league_id: nba.enums.LeagueID
+        :type league_id: wnba.enums.LeagueID
         :param season: Season to get players from. Required.
-        :type season: nba.enums.Season
+        :type season: wnba.enums.Season
         :param season_type: part of season to pull data from. Required.
-        :type season_type: nba.enums.SeasonType
+        :type season_type: wnba.enums.SeasonType
         :param per_mode: grouping of stat data. Totals or PerGame accepted. Required.
-        :type per_mode: nba.enums.PerMode
+        :type per_mode: wnba.enums.PerMode
         :param outcome: Filter to only include stats for won or lost games. Default '' returns all. Required.
-        :type outcome: nba.enums.Outcome
+        :type outcome: wnba.enums.Outcome
         :param location: Filter for home or road games only. Default '' returns all. Required.
-        :type location: nba.enums.Location
+        :type location: wnba.enums.Location
         :param month: Filter for games occurring in a specific month (relative to season start). Default 0 returns all. Required.
-        :type month: nba.enums.Month
+        :type month: wnba.enums.Month
         :param season_segment: Filter to only include stats from Post/Pre all star break. Default '' returns all. Required
-        :type season_segment: nba.enums.SeasonSegment
+        :type season_segment: wnba.enums.SeasonSegment
         :param last_n_days: Filter stats for only those occurring in the last n days. Default '' includes all games. Required.
-        :type last_n_days: nba.enums.LastNGames
+        :type last_n_days: wnba.enums.LastNGames
         :param last_n_games: Filter stats for only those occurring in the last n games. Default '' includes entire games. Required.
-        :type last_n_games: nba.enums.LastNGames
-        :param vs_team_id:
+        :type last_n_games: wnba.enums.LastNGames
+        :param vs_team_id: filter for stats vs a specific team.
         :type vs_team_id: int
+        :param days_rest: minimum number of days rest prior to game for stats to be included.
+        :type days_rest: int
         :returns: Team stats after applying all filters.
         :rtype: DataFrame
 
@@ -60,32 +62,35 @@ class Team(BaseEndpoint):
     def all_raw_stats(self, last_n_days=enums.LastNGames.Default, last_n_games=enums.LastNGames.Default,
                       league_id=enums.LeagueID.Default, location=enums.Location.Default, month=enums.Month.Default,
                       outcome=enums.Outcome.Default, per_mode=enums.PerMode.Totals, season=enums.Season.Default,
-                      season_segment=enums.SeasonSegment.Default, season_type=enums.SeasonType.Default, vs_team_id=''):
+                      season_segment=enums.SeasonSegment.Default, season_type=enums.SeasonType.Default, vs_team_id='',
+                      days_rest=''):
         """
         Team stats breakdown.
 
         :param league_id: ID of the league to get data for. Default 00. Required.
-        :type league_id: nba.enums.LeagueID
+        :type league_id: wnba.enums.LeagueID
         :param season: Season to get players from. Required.
-        :type season: nba.enums.Season
+        :type season: wnba.enums.Season
         :param season_type: part of season to pull data from. Required.
-        :type season_type: nba.enums.SeasonType
+        :type season_type: wnba.enums.SeasonType
         :param per_mode: grouping of stat data. Totals or PerGame accepted. Required.
-        :type per_mode: nba.enums.PerMode
+        :type per_mode: wnba.enums.PerMode
         :param outcome: Filter to only include stats for won or lost games. Default '' returns all. Required.
-        :type outcome: nba.enums.Outcome
+        :type outcome: wnba.enums.Outcome
         :param location: Filter for home or road games only. Default '' returns all. Required.
-        :type location: nba.enums.Location
+        :type location: wnba.enums.Location
         :param month: Filter for games occurring in a specific month (relative to season start). Default 0 returns all. Required.
-        :type month: nba.enums.Month
+        :type month: wnba.enums.Month
         :param season_segment: Filter to only include stats from Post/Pre all star break. Default '' returns all. Required
-        :type season_segment: nba.enums.SeasonSegment
+        :type season_segment: wnba.enums.SeasonSegment
         :param last_n_days: Filter stats for only those occurring in the last n days. Default '' includes all games. Required.
-        :type last_n_days: nba.enums.LastNGames
+        :type last_n_days: wnba.enums.LastNGames
         :param last_n_games: Filter stats for only those occurring in the last n games. Default '' includes entire games. Required.
-        :type last_n_games: nba.enums.LastNGames
-        :param vs_team_id:
+        :type last_n_games: wnba.enums.LastNGames
+        :param vs_team_id: filter for stats vs a specific team.
         :type vs_team_id: int
+        :param days_rest: minimum number of days rest prior to game for stats to be included.
+        :type days_rest: int
         :returns: Team stats after applying all filters.
         :rtype: DataFrame
 
